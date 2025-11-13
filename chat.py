@@ -3,7 +3,9 @@ import os
 import re
 from openai import OpenAI
 
-API_KEY = "fw_3ZLyBejzBgSzRwAADs9vkXFu"
+API_KEY = os.getenv("FIREWORKS_API_KEY")
+if not API_KEY:
+    raise ValueError("❌ Не найден FIREWORKS_API_KEY. Добавьте его в ~/.bashrc")
 BASE_URL = "https://api.fireworks.ai/inference/v1"
 MODEL = "accounts/fireworks/models/qwen3-235b-a22b"
 
